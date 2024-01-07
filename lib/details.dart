@@ -23,14 +23,6 @@ class _DetailsState extends State<Details> {
         Container(
           width: MediaQuery.of(context).size.width,
           height: 210,
-          decoration: BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: lightGray,
-                width: 2.0,
-              ),
-            ),
-          ),
           child: ClipRRect(
             child: Image.network(
                 fit: BoxFit.cover, widget.datum["image"].toString()),
@@ -75,7 +67,7 @@ class _DetailsState extends State<Details> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Text(
                     widget.datum['name'],
@@ -96,12 +88,85 @@ class _DetailsState extends State<Details> {
                   SizedBox(
                     height: 10,
                   ),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 4.0),
+                      child: Text(
+                        widget.datum['borough'],
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: green4,
+                          fontSize: tagSize,
+                        ),
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: green1,
+                      border: Border.all(
+                        style: BorderStyle.solid,
+                        color: green4,
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 4.0),
+                      child: Text(
+                        widget.datum['type'],
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: green4,
+                          fontSize: tagSize,
+                        ),
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: green1,
+                      border: Border.all(
+                        style: BorderStyle.solid,
+                        color: green4,
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Text(
-                    widget.datum['type'],
+                    "Hours of Operation",
                     style: TextStyle(
-                      color: green4,
+                      fontSize: labelSize,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    child: ListView.builder(
+                      padding: EdgeInsets.symmetric(vertical: 2.0),
+                      shrinkWrap: true,
+                      itemCount: widget.datum['hours'].length,
+                      itemBuilder: (context, index) {
+                        List<dynamic> workDay = widget.datum["hours"][index];
+                        return Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(workDay[0]),
+                              Text(workDay[1]),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],

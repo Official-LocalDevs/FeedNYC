@@ -4,6 +4,17 @@
         "name": "Masbia Soup Kitchen",
         "type": "Soup Kitchen",
         "address": "1372 Coney Island Avenue, Brooklyn New York, 11230",
-        "website": "masbia.org"
+        "borough": "Bronx",
+        "website": "masbia.org",
+        "hours": [
+            [
+                "Monday",
+                "9AM - 10PM"
+            ],
+            [
+                "Tuesday",
+                "9AM - 10PM"
+            ]
+        ]
     }
 ]

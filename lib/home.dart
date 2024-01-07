@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodnyc/borough_picker.dart';
+import 'package:foodnyc/tag_picker.dart';
 import 'package:foodnyc/constants.dart';
 import 'package:foodnyc/helper_functions.dart';
 import 'package:foodnyc/item_container.dart';
@@ -13,15 +13,37 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Future<List<Map<String, dynamic>>> data = fetchDataAndUseMap();
+  var _boroughs = ["Bronx", "Queens", "Brooklyn", "Manhattan", "Staten Island"];
+  var _types = ["Free Groceries", "Food Pantry", "Food Bank", "Soup Kitchen"];
+  var _selectedBorough = [true, false, false, false, false];
+  var _selectedType = [false, false, false, false];
+
+  _onSelectedType(int index) {
+    print(_selectedType[index]);
+    setState(() {
+      _selectedType[index] = !_selectedType[index];
+    });
+  }
+
+  _onSelectedBorough(int index) {
+    print(_selectedBorough[index]);
+    setState(() {
+      _selectedBorough[index] = !_selectedBorough[index];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var paddingSize = MediaQuery.of(context).size.width * 0.05;
-    Future<List<Map<String, dynamic>>> data = fetchDataAndUseMap();
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: paddingSize),
       child: Column(
         children: [
+          SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -47,27 +69,18 @@ class _HomeState extends State<Home> {
           ),
           TagPicker(
             label: "Borough",
-            boroughs: [
-              "Bronx",
-              "Queens",
-              "Brooklyn",
-              "Manhattan",
-              "Staten Island"
-            ],
-            selected: [false, false, false, false, false],
+            onSelected: _onSelectedBorough,
+            boroughs: _boroughs,
+            selected: _selectedBorough,
           ),
           SizedBox(
             height: 10,
           ),
           TagPicker(
             label: "Type",
-            boroughs: [
-              "Free Groceries",
-              "Food Pantry",
-              "Food Bank",
-              "Soup Kitchen"
-            ],
-            selected: [false, false, false, false],
+            onSelected: _onSelectedType,
+            boroughs: _types,
+            selected: _selectedType,
           ),
           SizedBox(
             height: 20,
@@ -76,19 +89,29 @@ class _HomeState extends State<Home> {
             future: data,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator(); // Show a loader while fetching data
+                return CircularProgressIndicator();
               } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                 return Text(
                     'Hmm, No data available at the moment. Check back in a few!');
               } else {
                 return Expanded(
                   child: ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      Map<String, dynamic> item = snapshot.data![index];
+
+                      bool boroughSelected =
+                          _selectedBorough[_boroughs.indexOf(item['borough'])];
+                      bool typeSelected =
+                          _selectedType[_types.indexOf(item['type'])];
+
+                      if (boroughSelected || typeSelected) {
                         return ItemContainer(
-                          datum: snapshot.data![index],
+                          datum: item,
                         );
-                      }),
+                      }
+                    },
+                  ),
                 );
               }
             },

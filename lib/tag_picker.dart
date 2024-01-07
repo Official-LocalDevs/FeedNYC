@@ -7,11 +7,13 @@ class TagPicker extends StatefulWidget {
     required this.label,
     required this.boroughs,
     required this.selected,
+    required this.onSelected,
   });
 
   final List<String> boroughs;
   final List<bool> selected;
   final String label;
+  final onSelected;
 
   @override
   State<TagPicker> createState() => _TagPickerState();
@@ -20,11 +22,11 @@ class TagPicker extends StatefulWidget {
 class _TagPickerState extends State<TagPicker> {
   @override
   Widget build(BuildContext context) {
-    void _onSelectBorough(int index) {
-      setState(() {
-        widget.selected[index] = !widget.selected[index];
-      });
-    }
+    // void _onSelectBorough(int index) {
+    //   setState(() {
+    //     widget.selected[index] = !widget.selected[index];
+    //   });
+    // }
 
     return Column(children: [
       Row(
@@ -50,7 +52,7 @@ class _TagPickerState extends State<TagPicker> {
               padding: const EdgeInsets.only(right: 5.0),
               child: GestureDetector(
                 onTap: () {
-                  _onSelectBorough(index);
+                  widget.onSelected(index);
                 },
                 child: Container(
                   child: Padding(
