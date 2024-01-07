@@ -22,7 +22,7 @@ class _DetailsState extends State<Details> {
       children: [
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 210,
+          height: MediaQuery.of(context).size.height * 0.4,
           child: ClipRRect(
             child: Image.network(
                 fit: BoxFit.cover, widget.datum["image"].toString()),
