@@ -4,7 +4,7 @@ Made using flutter!
 
 
 
-## Check out a walk through
+## Check out a walk through!
 Here, one can see places by filtering by borough _and_ by type, such as Soup Kitchen, Pantry, and more!
 
 
