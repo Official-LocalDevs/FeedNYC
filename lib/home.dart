@@ -15,9 +15,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   Future<List<Map<String, dynamic>>> data = fetchDataAndUseMap();
   var _boroughs = ["Bronx", "Queens", "Brooklyn", "Manhattan", "Staten Island"];
-  var _types = ["Free Groceries", "Food Pantry", "Food Bank", "Soup Kitchen"];
-  var _selectedBorough = [true, false, false, false, false];
-  var _selectedType = [false, false, false, false];
+  var _types = ["Soup Kitchen", "Free Groceries", "Food Pantry", "Food Bank"];
+  var _selectedBorough = [false, false, false, false, false];
+  var _selectedType = [true, false, false, false];
 
   _onSelectedType(int index) {
     print(_selectedType[index]);
@@ -55,13 +55,13 @@ class _HomeState extends State<Home> {
                   fontSize: 30,
                 ),
               ),
-              HeroIcon(
-                HeroIcons.magnifyingGlass,
-                style: HeroIconStyle
-                    .outline, // Outlined icons are used by default.
-                color: green4,
-                size: 30,
-              ),
+              // HeroIcon(
+              //   HeroIcons.magnifyingGlass,
+              //   style: HeroIconStyle
+              //       .outline, // Outlined icons are used by default.
+              //   color: green4,
+              //   size: 30,
+              // ),
             ],
           ),
           SizedBox(
@@ -109,6 +109,8 @@ class _HomeState extends State<Home> {
                         return ItemContainer(
                           datum: item,
                         );
+                      } else {
+                        return Container();
                       }
                     },
                   ),
