@@ -49,3 +49,6 @@ app.get("/borough/:borough", async (req, res) => {
     res.status(500).send(err.message);
   }
 });
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server is running on port ${port}`));
