@@ -25,15 +25,26 @@ app.get("/getall", async (req, res) => {
     res.status(500).send(err.message);
   }
 });
+
 //Endpoint to get place by ID
 app.get("/id/:id", async (req, res) => {
   try {
-    const place = await Place.findById(req.params.id);
-    if (place) {
+    const places = await Place.findById(req.params.id);
+    if (places) {
       res.json(place);
     } else {
       res.status(404).send("Place not found");
     }
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
+//Endpoint to get place by borough
+app.get("/borough/:borough", async (req, res) => {
+  try {
+    const places = await Place.find({ borough: req.params.borough });
+    res.json(places);
   } catch (err) {
     res.status(500).send(err.message);
   }
