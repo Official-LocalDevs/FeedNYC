@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const keys = require("./config/keys");
 
 //import models
-const Hours = require("./models/Hour");
 const Place = require("./models/Place");
 
 const app = express();
@@ -16,3 +15,26 @@ mongoose
   .connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
+
+//Endpoint to getall
+app.get("/getall", async (req, res) => {
+  try {
+    const places = await Place.find();
+    res.json(places);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+//Endpoint to get place by ID
+app.get("/id/:id", async (req, res) => {
+  try {
+    const place = await Place.findById(req.params.id);
+    if (place) {
+      res.json(place);
+    } else {
+      res.status(404).send("Place not found");
+    }
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
