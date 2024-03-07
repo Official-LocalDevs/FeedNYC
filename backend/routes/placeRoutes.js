@@ -1,38 +1,14 @@
 const router = require('express').Router();
 let Place = require('../models/Place');
+const {getPlaces, getPlaceById, getPlacesByBorough} = require('../controllers/placeController');
 
 //Endpoint to getall
-router.get("/", async (req, res) => {
-    try {
-      const places = await Place.find();
-      res.json(places);
-    } catch (err) {
-      res.status(500).send(err.message);
-    }
-  });
+router.get("/", getPlaces);
   
-  //Endpoint to get place by ID
-  router.get("/:id", async (req, res) => {
-    try {
-      const place = await Place.findById(req.params.id);
-      if (place) {
-        res.json(place);
-      } else {
-        res.status(404).send("Place not found");
-      }
-    } catch (err) {
-      res.status(500).send(err.message);
-    }
-  });
+//Endpoint to get place by ID
+router.get("/:id", getPlaceById);
   
-  //Endpoint to get place by borough
-  router.get("/borough/:borough", async (req, res) => {
-    try {
-      const places = await Place.find({ borough: req.params.borough });
-      res.json(places);
-    } catch (err) {
-      res.status(500).send(err.message);
-    }
-  });
+//Endpoint to get place by borough
+router.get("/borough/:borough", getPlacesByBorough);
 
 module.exports = router;
