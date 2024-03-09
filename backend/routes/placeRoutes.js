@@ -1,14 +1,13 @@
 const router = require('express').Router();
-let Place = require('../models/Place');
-const {getPlaces, getPlaceById, getPlacesByBorough} = require('../controllers/placeController');
+const placeController = require('../controllers/placeController');
 
 //Endpoint to getall
-router.get("/", getPlaces);
+router.get("/", placeController.getPlaces);
   
 //Endpoint to get place by ID
-router.get("/:id", getPlaceById);
+router.get("/:id", placeController.getPlaceById);
   
 //Endpoint to get place by borough
-router.get("/borough/:borough", getPlacesByBorough);
+router.get("/borough/:borough", placeController.getPlacesByBorough);
 
 module.exports = router;
