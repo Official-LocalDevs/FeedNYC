@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const Place = require('./Place.js')
-const keys = require('./keys.json')
+const Place = require("./Place.js");
+const keys = require("./keys.json");
 
-mongoose.connect(keys.mongoURI)
+mongoose.connect(keys.mongoURI);
 
 //create new place
 // new Place({
@@ -12,7 +12,6 @@ mongoose.connect(keys.mongoURI)
 //     borough: 'Brooklyn',
 //     tags: ['Halal', 'Vegetarian'],
 //     type: 'Food Pantry',
-//     description: 'Best Halal food in town',
 //     contact: '123-456-7890',
 //     hours: {
 //         Monday: {
@@ -36,7 +35,6 @@ mongoose.connect(keys.mongoURI)
 //     borough: 'Queens',
 //     type: 'Soup Kitchen',
 //     tags: ['Kosher'],
-//     description: 'Authentic Italian cuisine',
 //     contact: '987-654-3210',
 //     hours: {
 //         Tuesday: {
@@ -53,7 +51,6 @@ mongoose.connect(keys.mongoURI)
 //     console.log('saved')
 // )
 
-
 //find all query
 // const query = Place.find();
 
@@ -64,7 +61,6 @@ mongoose.connect(keys.mongoURI)
 //   .catch(err => {
 //     console.error(err);
 //   });
-
 
 //find by id (example object id used)
 // const idQuery = Place.find({_id:'65e661579ceecf2557ce17f4'});
@@ -77,7 +73,6 @@ mongoose.connect(keys.mongoURI)
 //     console.error(err);
 //   });
 
-
 // find by borough example
 // const boroughQuery = Place.find({'borough': 'Brooklyn'});
 
@@ -88,7 +83,6 @@ mongoose.connect(keys.mongoURI)
 //   .catch(err => {
 //     console.error(err);
 //   });
-
 
 //find by type example
 // const typeQuery = Place.find({'type': 'Soup Kitchen'});
@@ -101,8 +95,6 @@ mongoose.connect(keys.mongoURI)
 //     console.error(err);
 //   });
 
-
-
 // search if there is a day (uses Tuesday as an example)
 // const dayToCheck = "Tuesday";
 // const dayExistsQuery = Place.find({ [`hours.${dayToCheck}`]: { $exists: true } });
@@ -114,7 +106,6 @@ mongoose.connect(keys.mongoURI)
 //   .catch(err => {
 //     console.error(err);
 //   });
-
 
 // example time range query
 // const start = "12:00";
