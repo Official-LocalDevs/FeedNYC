@@ -9,6 +9,9 @@
 
 ### Environment Varibles
 `MONGODB_URI` - Connection URI to Mongo DB database
+```
+mongodb+srv://<USERNAME>:<PASSWORD>@<APP_NAME>.zhgcfji.mongodb.net/<DATABASE_NAME>?retryWrites=true&w=majority&appName=<APP_NAME>"
+```
 `PORT` - Port number where server will run (optional)
 
 ## Routes

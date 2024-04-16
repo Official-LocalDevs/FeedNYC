@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 const hourSchema = require('./Hour.js')
 
 const placeSchema = new mongoose.Schema({
-    name: { 
+    name: {
         type: String,
         required: true,
     },
     address: {
-        type: String, 
+        type: String,
         unique: true,
         required: true,
     },
@@ -17,26 +17,26 @@ const placeSchema = new mongoose.Schema({
         required: true,
     },
     borough: {
-        type:String, 
+        type: String,
         enum: ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'],
         required: true,
     },
     tags: {
-        type:[String],
-        enum:['Halal', 'Vegetarian','Kosher']
+        type: [String],
+        enum: ['Halal', 'Vegetarian', 'Kosher']
     },
-    description: { 
-        type:String, 
-        maxLength: 500 
+    description: {
+        type: String,
+        maxLength: 500
     },
     contact: {
         type: String,
         required: true
     },
     hours: {
-        type:hourSchema,
+        type: hourSchema,
         required: true
     }
 })
 
-module.exports = mongoose.model('places', placeSchema)
+module.exports = mongoose.model('place', placeSchema)
