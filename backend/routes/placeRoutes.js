@@ -1,13 +1,20 @@
 const router = require('express').Router();
 const placeController = require('../controllers/placeController');
 
-//Endpoint to getall
-router.get("/", placeController.getPlaces);
+router.get("/getAll", placeController.getPlaces);
   
-//Endpoint to get place by ID
-router.get("/:id", placeController.getPlaceById);
+router.get("/id/:id", placeController.getPlaceById);
   
-//Endpoint to get place by borough
 router.get("/borough/:borough", placeController.getPlacesByBorough);
+
+router.get("/tags/:tag", placeController.getPlaceByTag);
+
+router.get("/type/:type", placeController.getPlaceByType);
+
+router.get("/time/:open/:close", placeController.getPlaceByTime);
+
+router.get("/days/:days", placeController.getPlaceByDays)
+
+router.get("/search", placeController.getPlaceByName);
 
 module.exports = router;

@@ -13,5 +13,17 @@
 
 ## Routes
 - `api/places/` - Gets all places
-- `api/places/:id` - Gets place by ID
-- `api/places/borough/:borough` - Gets place by borough
+- `api/places/id/:id` - Gets place by ID
+- `api/places/borough/:borough` - Gets place by borough 
+    - enum: [ Brooklyn, Bronx, Queens, Manhattan, Staten Island ]
+    - borough name must have proper capitalization
+- `api/places/tags/:tag` - Gets place by tag 
+    - enum: [ Halal, Kosher, HIV Customers, Mobile ]
+- `api/places/type/:type` - Gets place by type 
+    - enum: [ soup_kitchen, food_pantry ]
+- `api/places/time/:open/:close` - Gets place by time range
+- `api/places/days/:days` - Gets place by day of the week 
+    - enum: [ Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday ]
+    - can add multiple days using a comma. ex: Monday, Tuesday
+- `api/places/search` - Fuzzy search by name
+    - query params: `name` 
