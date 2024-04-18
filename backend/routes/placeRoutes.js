@@ -7,7 +7,7 @@ router.get("/id/:id", placeController.getPlaceById);
 
 router.get("/borough/:borough", placeController.getPlacesByBorough);
 
-router.get("/tags/:tag", placeController.getPlaceByTag);
+router.get("/tags/:tags", placeController.getPlaceByTag);
 
 router.get("/type/:type", placeController.getPlaceByType);
 

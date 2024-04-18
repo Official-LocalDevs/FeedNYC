@@ -21,8 +21,10 @@ mongodb+srv://<USERNAME>:<PASSWORD>@<APP_NAME>.zhgcfji.mongodb.net/<DATABASE_NAM
 - `api/places/borough/:borough` - Gets place by borough 
     - enum: [ Brooklyn, Bronx, Queens, Manhattan, Staten Island ]
     - borough name must have proper capitalization
-- `api/places/tags/:tag` - Gets place by tag 
+- `api/places/tags/:tags` - Gets place by tags
     - enum: [ Halal, Kosher, HIV Customers, Mobile ]
+    - Returns all places with at least one of the queried tags
+    - Must separate all tags by a comma `Halal,Kosher,Mobile`
 - `api/places/type/:type` - Gets place by type 
     - enum: [ soup_kitchen, food_pantry ]
 - `api/places/time/:open/:close` - Gets place by time range

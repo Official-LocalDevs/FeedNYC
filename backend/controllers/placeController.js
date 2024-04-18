@@ -37,13 +37,12 @@ const getPlacesByBorough = async (req, res) => {
   }
 };
 
-//tag search
 const getPlaceByTag = async (req, res) => {
-  const tag = req.params.tag
+  const tags = req.params.tags.split(","); // Assuming tags are passed as comma-separated values in the URL
   try {
-    const place = await Place.find({ tags: tag });
-    if (place.length > 0) {
-      res.json(place);
+    const places = await Place.find({ tags: { $in: tags } });
+    if (places.length > 0) {
+      res.json(places);
     } else {
       res.status(404).send("Places not found");
     }
