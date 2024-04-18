@@ -1,33 +1,66 @@
 const mongoose = require('mongoose')
+const rangeSchema = require('./Range.js')
 
 const hourSchema = new mongoose.Schema({
-    Monday: {
-        open: String,
-        close: String
+    food_pantry: {
+        Monday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Tuesday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Wednesday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Thursday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Friday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Saturday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Sunday: {
+            type: [rangeSchema],
+            default:undefined
+        }
     },
-    Tuesday: {
-        open: String,
-        close: String
-    },
-    Wednesday: {
-        open: String,
-        close: String
-    },
-    Thursday: {
-        open: String,
-        close: String
-    },
-    Friday: {
-        open: String,
-        close: String
-    },
-    Saturday: {
-        open: String,
-        close: String
-    },
-    Sunday: {
-        open: String,
-        close: String
+    soup_kitchen: {
+        Monday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Tuesday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Wednesday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Thursday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Friday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Saturday: {
+            type: [rangeSchema],
+            default:undefined
+        },
+        Sunday: {
+            type: [rangeSchema],
+            default:undefined
+        }
     }
 });
 
