@@ -10,12 +10,13 @@
 ### Environment Varibles
 `MONGODB_URI` - Connection URI to Mongo DB database
 ```
+# Uri Template
 mongodb+srv://<USERNAME>:<PASSWORD>@<APP_NAME>.zhgcfji.mongodb.net/<DATABASE_NAME>?retryWrites=true&w=majority&appName=<APP_NAME>"
 ```
 `PORT` - Port number where server will run (optional)
 
 ## Routes
-- `api/places/` - Gets all places
+- `api/places/getAll` - Gets all places
 - `api/places/id/:id` - Gets place by ID
 - `api/places/borough/:borough` - Gets place by borough 
     - enum: [ Brooklyn, Bronx, Queens, Manhattan, Staten Island ]
