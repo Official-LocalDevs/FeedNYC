@@ -22,10 +22,10 @@ const placeSchema = new mongoose.Schema({
         required: true,
     },
     tags: {
-        type:[String],
-        enum:['Halal', 'Vegetarian', 'Kosher', 'HIV Customers'],
+        type: [String],
+        enum: ['Halal', 'Vegetarian', 'Kosher', 'HIV Customers'],
         required: true,
-        default:[]
+        default: []
     },
     hours: {
         type: hourSchema
