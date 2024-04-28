@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const hourSchema = require('./Hour.js')
+const noteSchema = require('./Note.js')
 
 const placeSchema = new mongoose.Schema({
     name: {
@@ -11,10 +12,9 @@ const placeSchema = new mongoose.Schema({
         unique: true,
         required: true,
     },
-    type: {
+    contact: {
         type: String,
-        enum: ['Food Pantry', 'Soup Kitchen', 'Food Bank', 'Free Groceries'],
-        required: true,
+        required: true
     },
     borough: {
         type: String,
@@ -23,19 +23,15 @@ const placeSchema = new mongoose.Schema({
     },
     tags: {
         type: [String],
-        enum: ['Halal', 'Vegetarian', 'Kosher']
-    },
-    description: {
-        type: String,
-        maxLength: 500
-    },
-    contact: {
-        type: String,
-        required: true
+        enum: ['Halal', 'Vegetarian', 'Kosher', 'HIV Customers'],
+        required: true,
+        default: []
     },
     hours: {
-        type: hourSchema,
-        required: true
+        type: hourSchema
+    },
+    notes:{
+        type: [noteSchema]   
     }
 })
 
